@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday Maa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Parisienne&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Cormorant Garamond', serif;
+background:linear-gradient(135deg,#4b0f16 0%,#7a1f2b 35%,#a83246 70%,#d94b62 100%);
+line-height:1.6;
+overflow-x:hidden;
+}
+
+/* MAIN SCREEN */
+
+.main-birthday-screen{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+overflow:hidden;
+background:linear-gradient(135deg,#4b0f16 0%,#7a1f2b 35%,#a83246 70%,#d94b62 100%);
+}
+
+/* TITLE */
+
+.birthday-title{
+font-family:'Parisienne', cursive;
+font-size:clamp(2.1rem,4vw,3.6rem);
+color:#fff7f7;
+text-shadow:2px 2px 18px rgba(0,0,0,0.45);
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:30;
+padding:14px 32px;
+border-radius:22px;
+background:rgba(0,0,0,0.18);
+backdrop-filter:blur(6px);
+white-space:nowrap;
+}
+
+/* PHOTO CONTAINER */
+
+.birthday-photos{
+position:absolute;
+inset:0;
+}
+
+/* PHOTOS */
+
+.birthday-photo{
+position:absolute;
+background-size:cover;
+background-position:center;
+border-radius:24px;
+border:7px solid rgba(255,245,245,0.96);
+box-shadow:0 20px 55px rgba(0,0,0,0.35);
+transition:0.4s ease;
+cursor:pointer;
+}
+
+.birthday-photo:hover{
+transform:scale(1.06);
+z-index:50;
+}
+
+/* TOP */
+
+.birthday-photo:nth-child(1){
+width:250px;
+height:175px;
+top:4%;
+left:5%;
+}
+
+.birthday-photo:nth-child(2){
+width:250px;
+height:175px;
+top:4%;
+right:5%;
+}
+
+/* LEFT SIDE */
+
+.birthday-photo:nth-child(3){
+width:220px;
+height:290px;
+top:28%;
+left:3%;
+transform:rotate(-5deg);
+}
+
+.birthday-photo:nth-child(4){
+width:220px;
+height:290px;
+bottom:6%;
+left:12%;
+transform:rotate(4deg);
+}
+
+/* RIGHT SIDE */
+
+.birthday-photo:nth-child(5){
+width:220px;
+height:290px;
+top:28%;
+right:3%;
+transform:rotate(5deg);
+}
+
+.birthday-photo:nth-child(6){
+width:220px;
+height:290px;
+bottom:6%;
+right:12%;
+transform:rotate(-4deg);
+}
+
+/* EXTRA PHOTOS */
+
+.birthday-photo:nth-child(7){
+width:180px;
+height:135px;
+top:18%;
+left:28%;
+transform:rotate(-4deg);
+}
+
+.birthday-photo:nth-child(8){
+width:180px;
+height:135px;
+top:18%;
+right:28%;
+transform:rotate(4deg);
+}
+
+.birthday-photo:nth-child(9){
+width:165px;
+height:210px;
+bottom:12%;
+left:31%;
+transform:rotate(5deg);
+}
+
+.birthday-photo:nth-child(10){
+width:165px;
+height:210px;
+bottom:12%;
+right:31%;
+transform:rotate(-5deg);
+}
+
+/* HEARTS */
+
+.decorative-hearts{
+position:absolute;
+font-size:2rem;
+animation:float 6s ease-in-out infinite;
+z-index:5;
+}
+
+.heart1{
+top:14%;
+left:20%;
+}
+
+.heart2{
+top:18%;
+right:20%;
+}
+
+.heart3{
+bottom:24%;
+left:22%;
+}
+
+.heart4{
+bottom:22%;
+right:22%;
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-15px);
+}
+}
+
+/* LETTER SECTION */
+
+.letters-section{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:120px;
+padding:100px 40px;
+background:linear-gradient(135deg,#5b101b 0%,#8c2235 100%);
+}
+
+.photo-box{
+width:450px;
+height:550px;
+background-size:cover;
+background-position:center;
+border-radius:35px;
+cursor:pointer;
+overflow:hidden;
+position:relative;
+border:10px solid rgba(255,255,255,0.6);
+box-shadow:0 30px 80px rgba(0,0,0,0.3);
+transition:0.4s ease;
+}
+
+.photo-box:nth-child(1){
+background-image:url('letter1-box.jpeg');
+}
+
+.photo-box:nth-child(2){
+background-image:url('letter2-box.jpeg');
+}
+
+.photo-box:nth-child(3){
+background-image:url('letter3-box.jpeg');
+}
+
+.photo-box::before{
+content:'';
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.35);
+}
+
+.photo-box:hover{
+transform:translateY(-18px) scale(1.03);
+}
+
+/* LETTER POPUP */
+
+.letter{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:linear-gradient(135deg,#5a0f1b 0%,#91263b 50%,#c03953 100%);
+display:none;
+padding:40px 20px;
+z-index:2000;
+overflow:hidden;
+}
+
+.letter-container{
+display:flex;
+max-width:1400px;
+margin:0 auto;
+gap:30px;
+height:calc(100vh - 80px);
+}
+
+/* SIDE IMAGES */
+
+.photo-frame{
+flex:0 0 220px;
+height:65%;
+background:white;
+border-radius:25px;
+overflow:hidden;
+border:4px dashed #f0a6b5;
+box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+.photo-frame img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* LETTER */
+
+.letter-content{
+flex:1;
+background:rgba(255,255,255,0.98);
+padding:35px;
+border-radius:35px;
+overflow-y:auto;
+border:3px solid #f0a6b5;
+box-shadow:0 30px 80px rgba(0,0,0,0.2);
+max-width: calc(100% - 500px);
+}
+
+.letter-text{
+font-size:28px;
+line-height:1.9;
+color:#3a1b22;
+text-align:center;
+white-space:pre-wrap;
+font-weight:500;
+}
+
+/* CLOSE BUTTON */
+
+.close-btn{
+position:absolute;
+top:25px;
+right:35px;
+width:75px;
+height:75px;
+border:none;
+border-radius:50%;
+background:linear-gradient(45deg,#7a1023,#d94b62);
+color:white;
+font-size:34px;
+cursor:pointer;
+z-index:3000;
+}
+
+/* THIRD LETTER SECTION */
+
+.letters-section-single{
+min-height:50vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:60px 40px 100px;
+background:linear-gradient(135deg,#5b101b 0%,#8c2235 100%);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.birthday-title{
+font-size:clamp(1.8rem,7vw,2.6rem);
+padding:10px 20px;
+}
+
+.birthday-photo{
+width:110px !important;
+height:150px !important;
+}
+
+.birthday-photo:nth-child(1),
+.birthday-photo:nth-child(2),
+.birthday-photo:nth-child(7),
+.birthday-photo:nth-child(8){
+width:125px !important;
+height:95px !important;
+}
+
+.birthday-photo:nth-child(9),
+.birthday-photo:nth-child(10){
+width:105px !important;
+height:135px !important;
+}
+
+.letters-section{
+flex-direction:column;
+gap:60px;
+padding:80px 20px;
+}
+
+.letters-section-single{
+padding:20px 20px 80px;
+}
+
+.photo-box{
+width:100%;
+max-width:400px;
+height:500px;
+}
+
+.letter-container{
+flex-direction:column;
+height:calc(100vh - 120px);
+}
+
+.photo-frame{
+width:100%;
+height:200px;
+flex:none;
+}
+
+.letter-content{
+padding:30px 20px;
+max-width:none;
+}
+
+.letter-text{
+font-size:22px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="main-birthday-screen">
+
+<h1 class="birthday-title">
+Happy Birthday Maa ✨💖
+</h1>
+
+<div class="birthday-photos">
+
+<div class="birthday-photo" style="background-image:url('photo1.jpeg')"></div>
+
+<div class="birthday-photo" style="background-image:url('photo2.jpeg')"></div>
+
+<div class="birthday-photo" style="background-image:url('photo3.jpeg')"></div>
+
+<div class="birthday-photo" style="background-image:url('photo4.jpeg')"></div>
+
+<div class="birthday-photo" style="background-image:url('photo5.jpeg')"></div>
+
+<div class="birthday-photo" style="background-image:url('photo6.jpeg')"></div>
+
+<div class="birthday-photo" style="background-image:url('photo7.jpeg')"></div>
+
+<div class="birthday-photo" style="background-image:url('photo8.jpeg')"></div>
+
+<div class="birthday-photo" style="background-image:url('photo9.jpeg')"></div>
+
+<div class="birthday-photo" style="background-image:url('photo10.jpeg')"></div>
+
+
+</div>
+
+<div class="decorative-hearts heart1">💕</div>
+<div class="decorative-hearts heart2">💖</div>
+<div class="decorative-hearts heart3">💝</div>
+<div class="decorative-hearts heart4">🌸</div>
+
+</div>
+
+<!-- TWO LETTER BOXES -->
+<section class="letters-section">
+
+<div class="photo-box" onclick="openLetter(1)"></div>
+
+<div class="photo-box" onclick="openLetter(2)"></div>
+
+</section>
+
+<!-- THIRD LETTER BOX -->
+<section class="letters-section-single">
+
+<div class="photo-box" style="background-image:url('letter3-box.jpeg');" onclick="openLetter(3)"></div>
+
+</section>
+
+<!-- LETTER 1 -->
+<div id="letter1" class="letter">
+
+<button class="close-btn" onclick="closeLetter(1)">✕</button>
+
+<div class="letter-container">
+
+<div class="photo-frame">
+<img src="letter1-left.jpeg" alt="Photo">
+</div>
+
+<div class="letter-content">
+
+<div class="letter-text">
+Happy Birthday Maa,
+
+You're the best mom in this world, there is no one better than you. You mean so much to us and we are the luckiest to have you as our mom.
+
+We love you so much. We love everything about you, every single thing about you. The way you care about us, the way you think, the way you speak about us, the way you speak with us, and the pain and sacrifice you try to hide from us.
+
+We know life has not always been easy for you, but you still gave us so much love, care, and happiness without ever making us feel your pain. You've given up so much for us without ever asking for recognition or gratitude. You always put us before yourself and kept this family together with so much strength and love.
+
+We also notice all the small things you do for us, even when you think we do not. We see your care, your effort, and all the sacrifices you make quietly just to make us happy. Thank you for the countless small gestures that show us how much we matter to you.
+
+Growing up we may not have understood many things, but as we get older, we slowly realize how much love was hidden behind every little thing you did for us. Every small sacrifice, every sleepless night, every worry, and every effort you made came from nothing but pure love. Honestly, nobody in this world could ever love us the way you do.
+
+Thank you for always believing in us even when we didn't believe in ourselves. You are an inspiration to us. The way you raised us, cared for us, protected us, and loved us has shaped who we are today. If we become good people in life someday, a big reason will always be you.
+
+We are extremely grateful for all the things you've done for us and for the family. We can never repay you for the life you've built for us. You deserve all the good things in the world.
+
+No matter how old we become, we will always be your little kids who look for love, comfort, and happiness in you. Home does not feel like a place to us, home feels like you. Your love makes our life better and happier every single day.
+
+Your happiness is now our mission. We dream of fulfilling all your dreams and we hope we are able to do that. We hope to bring as much happiness and joy to your life as you've brought to ours. That is the least we can do for you after everything you've done for us.
+
+Forgive us for anything that we might have done intentionally or unintentionally that hurt you.
+
+You are truly irreplaceable. No matter where life takes us, please always remember that you will forever be the most important person in our lives. Your happiness, your smile, and your peace will always matter to us more than anything else.
+
+We promise to honor your legacy and make you proud with our actions and choices.
+
+Happy Birthday once again, Maa. ❤️</div>
+
+</div>
+
+<div class="photo-frame">
+<img src="letter1-right.jpg" alt="Photo">
+</div>
+
+</div>
+
+</div>
+
+<!-- LETTER 2 -->
+<div id="letter2" class="letter">
+
+<button class="close-btn" onclick="closeLetter(2)">✕</button>
+
+<div class="letter-container">
+
+<div class="photo-frame">
+<img src="letter2-left.jpeg" alt="Photo">
+</div>
+
+<div class="letter-content">
+<div class="letter-text">
+Happy Birthday Maa,
+
+Thank you for being the biggest reason behind our happiness and strength. We don't think words are enough to tell you how important you are to us, but today we just want you to know how much we love and respect you.
+
+We may not say it often, but we notice every sacrifice you make, every worry you hide, and every little thing you do for us. You never asked for appreciation, yet you have done countless things for this family quietly and selflessly. We notice it all, and we will always be grateful for it. Now that we're grown, we see how much you carried so we never had to. There were so many things you quietly gave up for us that we may never fully know about, but we feel it in everything we have and everything we are.
+
+Everything we have today is because of your hard work and love. Everything good in us today exists because of you and the values you gave us. Everything we hope to become one day, you already are.
+
+You inspire us every single day with the way you lead your life and the way you care for everyone around you. The way you raised us with so much love and care is something we will always be grateful for. Growing up with your love is the greatest gift.
+
+You are truly our biggest blessing. We are truly lucky to have you as our mother. Wherever life takes us, being your children will always be one of the greatest blessings and proudest parts of our lives.
+
+You believed in us even when we did not want to believe in ourselves. Your happiness means everything to us now. We just hope one day we can make you proud and give you all the happiness you deserve after everything you've done for us. We genuinely hope we can fulfill your dreams one day and give back even a small part of the love and care you've given us all these years.
+
+We love each and everything about you. We are proud to be your children and we promise to be everything you have raised us to be.
+
+And if we have ever hurt you knowingly or unknowingly, we are really sorry.
+
+You deserve all the happiness, peace, and every beautiful thing in this world. Your smile and peace is something we will always work hard to protect.
+
+Happy Birthday once again, Maa. ❤️
+</div>
+</div>
+
+<div class="photo-frame">
+<img src="letter2-right.jpeg" alt="Photo">
+</div>
+
+</div>
+
+</div>
+
+<!-- LETTER 3 -->
+<div id="letter3" class="letter">
+
+<button class="close-btn" onclick="closeLetter(3)">✕</button>
+
+<div class="letter-container">
+
+<div class="photo-frame">
+<img src="letter3-left.jpeg" alt="Photo">
+</div>
+
+<div class="letter-content">
+<div class="letter-text">
+Happy Birthday to my Wife
+You are the most special person in my life.i can't imagine spending day without you by My side.i hope the year ahead holds many amazing new adventures for you.....
+
+</div>
+</div>
+
+<div class="photo-frame">
+<img src="letter3-right.jpeg" alt="Photo">
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function openLetter(n){
+document.getElementById('letter'+n).style.display='block';
+document.body.style.overflow='hidden';
+}
+
+function closeLetter(n){
+document.getElementById('letter'+n).style.display='none';
+document.body.style.overflow='auto';
+}
+
+</script>
+
+</body>
+</html>
